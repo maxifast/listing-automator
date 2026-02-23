@@ -4,19 +4,12 @@
   --font-sans: "Outfit", "Inter", sans-serif;
 
   --color-primary: #0F172A;
-  /* Dark Slate Gray */
   --color-secondary: #475569;
-  /* Lighter Gray */
   --color-bg: #FAFAFA;
-  /* Pure White/Alabastro */
 
-  /* Radiants & Accents */
   --color-accent-1: #06B6D4;
-  /* Cyan */
   --color-accent-2: #8B5CF6;
-  /* Purple */
   --color-accent-3: #EC4899;
-  /* Pink */
 }
 
 @layer base {
@@ -24,13 +17,24 @@
   html,
   body,
   #root {
-    @apply bg-bg text-primary font-sans antialiased overflow-x-hidden max-w-[100vw];
+    @apply bg-bg text-primary font-sans antialiased overflow-x-hidden;
+    max-width: 100%;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 md:bg-white/60 backdrop-blur-sm md:backdrop-blur-lg border border-white/20 shadow-[0_8px_32px_0_rgba(31, 38, 135, 0.07)];
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  @media (min-width: 768px) {
+    .glass {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
   }
 
   .text-gradient {
