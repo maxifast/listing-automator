@@ -24,7 +24,12 @@ export const HeroSection = ({
             setGeneratedResult(null);
 
             let i = 0;
-            const mockSeoResponse = `Optimización SEO Generada:\n\nTítulo Meta (60 chars):\n"☕ Cafetera Automática Delonghi - Mejor Precio Online"\n\nDescripción Meta (155 chars):\n"Descubre la cafetera automática Delonghi con molinillo integrado. Prepara espresso perfecto en casa con un solo botón. Envío gratis y 2 años de garantía."\n\nPalabras clave identificadas:\ncafetera automatica, delonghi magnifica, comprar cafetera espresso, mejor cafetera casa, cafe en grano delonghi.`;
+            const userKeyword = query.trim() || 'Producto';
+            const titleCasedKeyword = userKeyword.charAt(0).toUpperCase() + userKeyword.slice(1).toLowerCase();
+            const rawWords = userKeyword.split(' ').filter(w => w.length > 2);
+            const mainWord = rawWords[0] || userKeyword;
+
+            const mockSeoResponse = `Optimización SEO Generada:\n\nTítulo Meta (60 chars):\n"✨ ${titleCasedKeyword} - Mejor Precio Online garantizado"\n\nDescripción Meta (155 chars):\n"Descubre todo sobre ${userKeyword.toLowerCase()}. Analizamos especificaciones, ventajas y te damos la mejor recomendación. Compra ahora con envío rápido y seguro."\n\nPalabras clave identificadas:\n${userKeyword.toLowerCase()}, comprar ${mainWord.toLowerCase()}, mejor ${titleCasedKeyword}, oferta ${mainWord.toLowerCase()}, precio ${userKeyword.toLowerCase()}.`;
 
             const interval = setInterval(() => {
                 setTypingText((prev) => prev + mockSeoResponse.charAt(i));
