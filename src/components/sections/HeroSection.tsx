@@ -147,9 +147,9 @@ export const HeroSection = ({
                                         <button className="px-4 py-2 text-sm font-medium text-secondary hover:text-primary transition-colors">
                                             Editar
                                         </button>
-                                        <button className="px-5 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-black transition-colors shadow-lg">
+                                        <a href="#pricing" className="px-5 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-black transition-colors shadow-lg">
                                             Exportar
-                                        </button>
+                                        </a>
                                     </motion.div>
                                 )}
                             </motion.div>

@@ -80,7 +80,7 @@ function App() {
         />
 
         {/* Opaque sections wrapper */}
-        <div className="relative bg-white/95 md:bg-white/80 md:backdrop-blur-3xl rounded-t-[3rem] border-t border-white/50 shadow-[0_-20px_40px_rgba(0,0,0,0.05)] pt-12 pb-24 mt-[-4rem] overflow-hidden">
+        <div className="relative bg-white/95 md:bg-white/80 md:backdrop-blur-3xl rounded-t-[3rem] border-t border-white/50 shadow-[0_-20px_40px_rgba(0,0,0,0.05)] pt-12 pb-24 overflow-hidden">
           <FeaturesSection />
           <ExamplesSection />
           <PricingSection />
