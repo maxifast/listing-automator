@@ -17,7 +17,7 @@ function App() {
 
       {/* 3D Background Layer - Fixed behind everything */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }}>
+        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={[1, 1.5]}>
           <ambientLight intensity={0.5} />
           <Suspense fallback={null}>
             <GlassShape isGenerating={isGenerating} />
@@ -52,7 +52,7 @@ function App() {
         />
 
         {/* Using smooth background transition into opaque sections */}
-        <div className="relative bg-white/80 backdrop-blur-3xl rounded-t-[3rem] border-t border-white/50 shadow-[0_-20px_40px_rgba(0,0,0,0.05)] pt-12 pb-24 mt-[-4rem]">
+        <div className="relative bg-white/95 md:bg-white/80 md:backdrop-blur-3xl rounded-t-[3rem] border-t border-white/50 shadow-[0_-20px_40px_rgba(0,0,0,0.05)] pt-12 pb-24 mt-[-4rem] overflow-hidden">
           <FeaturesSection />
           <ExamplesSection />
           <PricingSection />

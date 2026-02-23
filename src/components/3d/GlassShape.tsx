@@ -50,12 +50,13 @@ export const GlassShape = ({ isGenerating = false }: GlassShapeProps) => {
             <Float speed={isGenerating ? 5 : 2} rotationIntensity={isGenerating ? 2 : 0.5} floatIntensity={isGenerating ? 3 : 1}>
                 <mesh ref={mesh} position={[12, 0, -15]}>
                     <torusKnotGeometry args={[14, 4, 300, 80]} />
-                    {/* Advanced refrective glass material */}
+                    {/* Advanced refrective glass material. Optimized for Mobile GPU */}
                     <MeshTransmissionMaterial
                         ref={material}
                         background={new THREE.Color('#FAFAFA')}
                         backside
-                        samples={4}
+                        samples={2}
+                        resolution={256}
                         thickness={3}
                         chromaticAberration={0.06}
                         anisotropy={0.1}
