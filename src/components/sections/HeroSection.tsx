@@ -24,12 +24,21 @@ export const HeroSection = ({
             setGeneratedResult(null);
 
             let i = 0;
-            const userKeyword = query.trim() || 'Producto';
+            const userKeyword = query.trim() || 'Desarrollo Web';
             const titleCasedKeyword = userKeyword.charAt(0).toUpperCase() + userKeyword.slice(1).toLowerCase();
             const rawWords = userKeyword.split(' ').filter(w => w.length > 2);
             const mainWord = rawWords[0] || userKeyword;
+            const lowerQuery = userKeyword.toLowerCase();
 
-            const mockSeoResponse = `Optimización SEO Generada:\n\nTítulo Meta (60 chars):\n"✨ ${titleCasedKeyword} - Mejor Precio Online garantizado"\n\nDescripción Meta (155 chars):\n"Descubre todo sobre ${userKeyword.toLowerCase()}. Analizamos especificaciones, ventajas y te damos la mejor recomendación. Compra ahora con envío rápido y seguro."\n\nPalabras clave identificadas:\n${userKeyword.toLowerCase()}, comprar ${mainWord.toLowerCase()}, mejor ${titleCasedKeyword}, oferta ${mainWord.toLowerCase()}, precio ${userKeyword.toLowerCase()}.`;
+            // Detect user intent to make the AI look smart
+            const isInformational = /como|cómo|qué|que|cual|cuál|guia|guía|mejores|top|aprender|tutorial|por qué|por que|curso|estrategia|historia|beneficios/i.test(lowerQuery) || rawWords.length > 3;
+
+            let mockSeoResponse = '';
+            if (isInformational) {
+                mockSeoResponse = `Análisis de Intención: Informativo / Editorial 📝\n\n[Meta Title]\n"✨ ${titleCasedKeyword}: La Guía Definitiva (Actualizada)"\n\n[Meta Description]\n"Descubre todo lo que necesitas saber sobre ${lowerQuery}. Analizamos a fondo conceptos, consejos prácticos y las mejores estrategias para dominar este tema y alcanzar tus objetivos."\n\n[Estructura Óptima H2]\n• Introducción a ${titleCasedKeyword}\n• Principales beneficios y conceptos\n• Errores comunes que debes evitar\n• Preguntas Frecuentes (FAQ)\n\n[Keywords Semánticas]\nguía ${lowerQuery}, aprender sobre ${mainWord.toLowerCase()}, ventajas de ${lowerQuery}.`;
+            } else {
+                mockSeoResponse = `Análisis de Intención: Transaccional / Ficha Comercial 🛍️\n\n[Meta Title]\n"✨ ${titleCasedKeyword} - Análisis, Precios y Reseñas"\n\n[Meta Description]\n"Conoce todas las especificaciones de ${lowerQuery}. Descubre si es la opción ideal para ti comparando sus características, rendimiento y opiniones contrastadas."\n\n[Estructura Óptima H2]\n• Especificaciones al detalle\n• Pros y Contras de ${titleCasedKeyword}\n• ¿Cómo elegir la mejor opción?\n• Alternativas del mercado\n\n[Keywords Semánticas]\nprecio ${lowerQuery}, opiniones ${titleCasedKeyword}, ${lowerQuery} barato, comprar ${mainWord.toLowerCase()}.`;
+            }
 
             const interval = setInterval(() => {
                 setTypingText((prev) => prev + mockSeoResponse.charAt(i));
