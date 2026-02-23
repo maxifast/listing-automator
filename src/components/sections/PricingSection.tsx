@@ -44,7 +44,7 @@ export const PricingSection = () => {
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
                             className={cn(
                                 "relative rounded-3xl p-8 flex flex-col transition-transform duration-300 hover:-translate-y-2",

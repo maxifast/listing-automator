@@ -2,28 +2,37 @@
 
 @theme {
   --font-sans: "Outfit", "Inter", sans-serif;
-  
-  --color-primary: #0F172A; /* Dark Slate Gray */
-  --color-secondary: #475569; /* Lighter Gray */
-  --color-bg: #FAFAFA; /* Pure White/Alabastro */
-  
+
+  --color-primary: #0F172A;
+  /* Dark Slate Gray */
+  --color-secondary: #475569;
+  /* Lighter Gray */
+  --color-bg: #FAFAFA;
+  /* Pure White/Alabastro */
+
   /* Radiants & Accents */
-  --color-accent-1: #06B6D4; /* Cyan */
-  --color-accent-2: #8B5CF6; /* Purple */
-  --color-accent-3: #EC4899; /* Pink */
+  --color-accent-1: #06B6D4;
+  /* Cyan */
+  --color-accent-2: #8B5CF6;
+  /* Purple */
+  --color-accent-3: #EC4899;
+  /* Pink */
 }
 
 @layer base {
-  body {
-    @apply bg-bg text-primary font-sans antialiased overflow-x-hidden;
+
+  html,
+  body,
+  #root {
+    @apply bg-bg text-primary font-sans antialiased overflow-x-hidden max-w-[100vw];
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/60 backdrop-blur-lg border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+    @apply bg-white/60 backdrop-blur-lg border border-white/20 shadow-[0_8px_32px_0_rgba(31, 38, 135, 0.07)];
   }
-  
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-1 via-accent-2 to-accent-3;
   }

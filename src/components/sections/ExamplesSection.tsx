@@ -24,7 +24,7 @@ export const ExamplesSection = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         className="group relative bg-white rounded-3xl p-1 shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-accent-1/20 to-accent-2/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
@@ -70,7 +70,7 @@ export const ExamplesSection = () => {
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{ delay: 0.2 }}
                         className="group relative bg-white rounded-3xl p-1 shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
                     >

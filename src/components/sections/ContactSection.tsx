@@ -16,7 +16,7 @@ export const ContactSection = () => {
                             <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 className="text-4xl md:text-5xl font-bold text-primary mb-6"
                             >
                                 ¿Listo para dominar <br /> tu <span className="text-gradient">nicho</span>?
@@ -50,7 +50,7 @@ export const ContactSection = () => {
                         <motion.form
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             className="space-y-6 bg-white/50 backdrop-blur-md p-8 rounded-3xl border border-gray-100/50"
                         >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

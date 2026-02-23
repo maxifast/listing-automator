@@ -17,7 +17,7 @@ function App() {
 
       {/* 3D Background Layer - Fixed behind everything */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 30], fov: 75 }}>
+        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }}>
           <ambientLight intensity={0.5} />
           <Suspense fallback={null}>
             <GlassShape isGenerating={isGenerating} />
