@@ -7,22 +7,26 @@ import { ExamplesSection } from './components/sections/ExamplesSection';
 import { PricingSection } from './components/sections/PricingSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/sections/Footer';
+import { useMediaQuery } from './lib/utils';
 
 function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedResult, setGeneratedResult] = useState<string | null>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <main className="relative w-full min-h-screen">
 
-      {/* 3D Background Layer - Fixed behind everything */}
+      {/* 3D Background Layer - Fixed behind everything. Disabled on mobile for max frame rate */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={[1, 1.5]}>
-          <ambientLight intensity={0.5} />
-          <Suspense fallback={null}>
-            <GlassShape isGenerating={isGenerating} />
-          </Suspense>
-        </Canvas>
+        {!isMobile && (
+          <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={[1, 1]}>
+            <ambientLight intensity={0.5} />
+            <Suspense fallback={null}>
+              <GlassShape isGenerating={isGenerating} />
+            </Suspense>
+          </Canvas>
+        )}
       </div>
 
       {/* Main Content Overlay */}

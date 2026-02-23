@@ -57,9 +57,9 @@ export const HeroSection = ({
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex flex-col space-y-8 z-10"
                 >
-                    <div className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full w-max text-sm font-medium border border-accent-1/30">
-                        <Sparkles className="w-4 h-4 text-accent-1" />
-                        <span className="text-secondary">Listing-Automator IA 3.0 Disponible</span>
+                    <div className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full w-full sm:w-max text-xs sm:text-sm font-medium border border-accent-1/30">
+                        <Sparkles className="w-4 h-4 text-accent-1 shrink-0" />
+                        <span className="text-secondary truncate">Listing-Automator IA 3.0 Disponible</span>
                     </div>
 
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-primary leading-[1.1]">
@@ -117,10 +117,10 @@ export const HeroSection = ({
                     <AnimatePresence>
                         {(isGenerating || generatedResult) && (
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                                className="absolute inset-0 m-auto w-full max-w-lg h-max glass border border-white/40 p-8 rounded-3xl shadow-2xl flex flex-col"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="absolute inset-0 m-auto w-[90%] max-w-lg h-max glass border border-white/40 p-6 md:p-8 rounded-3xl shadow-2xl flex flex-col"
                             >
                                 <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-gray-200/50">
                                     <div className={cn("p-2 rounded-lg", isGenerating ? "bg-accent-2/20 text-accent-2" : "bg-accent-1/20 text-accent-1")}>
