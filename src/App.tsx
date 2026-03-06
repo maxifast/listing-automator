@@ -7,28 +7,24 @@ import { ExamplesSection } from './components/sections/ExamplesSection';
 import { PricingSection } from './components/sections/PricingSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/sections/Footer';
-import { useMediaQuery } from './lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Bot } from 'lucide-react';
 
 function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedResult, setGeneratedResult] = useState<string | null>(null);
-  const isMobile = useMediaQuery("(max-width: 768px)");
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <main className="relative w-full min-h-screen">
 
-      {/* 3D Background Layer - Disabled on mobile for max frame rate */}
+      {/* 3D Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {!isMobile && (
-          <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={[1, 1]}>
-            <ambientLight intensity={0.5} />
-            <Suspense fallback={null}>
-              <GlassShape isGenerating={isGenerating} />
-            </Suspense>
-          </Canvas>
-        )}
+        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={[1, 1]}>
+          <ambientLight intensity={0.5} />
+          <Suspense fallback={null}>
+            <GlassShape isGenerating={isGenerating} />
+          </Suspense>
+        </Canvas>
       </div>
 
       {/* Main Content Overlay */}
@@ -36,8 +32,11 @@ function App() {
 
         {/* Navbar */}
         <header className="absolute top-0 w-full px-4 sm:px-6 lg:px-8 py-4 md:py-6 flex justify-between items-center z-50">
-          <div className="text-xl font-bold tracking-tighter text-primary">
-            Listing<span className="text-accent-1">-Automator</span>
+          <div className="flex items-center gap-2 text-xl font-bold tracking-tighter text-primary">
+            <Bot className="w-8 h-8 text-accent-1" />
+            <div>
+              Listing<span className="text-accent-1">-Automator</span>
+            </div>
           </div>
 
           {/* Desktop nav */}
