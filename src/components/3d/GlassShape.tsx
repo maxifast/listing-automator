@@ -5,9 +5,10 @@ import { Environment, MeshTransmissionMaterial, Float } from '@react-three/drei'
 
 interface GlassShapeProps {
     isGenerating?: boolean;
+    isMobile?: boolean;
 }
 
-export const GlassShape = ({ isGenerating = false }: GlassShapeProps) => {
+export const GlassShape = ({ isGenerating = false, isMobile = false }: GlassShapeProps) => {
     const mesh = useRef<THREE.Mesh>(null);
     const material = useRef<any>(null);
 
@@ -47,30 +48,44 @@ export const GlassShape = ({ isGenerating = false }: GlassShapeProps) => {
             <Environment preset="city" />
 
             {/* Floating animation for organic feel */}
-            <Float speed={isGenerating ? 5 : 2} rotationIntensity={isGenerating ? 2 : 0.5} floatIntensity={isGenerating ? 3 : 1}>
+            <Float speed={isGenerating ? (isMobile ? 2 : 5) : 2} rotationIntensity={isGenerating ? (isMobile ? 1 : 2) : 0.5} floatIntensity={isGenerating ? (isMobile ? 1.5 : 3) : 1}>
                 <mesh ref={mesh} position={[12, 0, -15]}>
-                    <torusKnotGeometry args={[14, 4, 300, 80]} />
+                    <torusKnotGeometry args={isMobile ? [14, 4, 64, 16] : [14, 4, 300, 80]} />
                     {/* Advanced refrective glass material. Optimized for Mobile GPU */}
-                    <MeshTransmissionMaterial
-                        ref={material}
-                        background={new THREE.Color('#FAFAFA')}
-                        backside
-                        samples={2}
-                        resolution={256}
-                        thickness={3}
-                        chromaticAberration={0.06}
-                        anisotropy={0.1}
-                        distortion={0.2}
-                        distortionScale={0.3}
-                        temporalDistortion={0.1}
-                        iridescence={0.3}
-                        iridescenceIOR={1.3}
-                        iridescenceThicknessRange={[100, 400]}
-                        clearcoat={1}
-                        color="#ffffff"
-                        transmission={1}
-                        roughness={0.1}
-                    />
+                    {isMobile ? (
+                        <meshPhysicalMaterial
+                            ref={material}
+                            color="#fafafa"
+                            metalness={0.1}
+                            roughness={0.2}
+                            transmission={0.9}
+                            ior={1.2}
+                            thickness={1}
+                            transparent
+                            opacity={1}
+                        />
+                    ) : (
+                        <MeshTransmissionMaterial
+                            ref={material}
+                            background={new THREE.Color('#FAFAFA')}
+                            backside
+                            samples={2}
+                            resolution={256}
+                            thickness={3}
+                            chromaticAberration={0.06}
+                            anisotropy={0.1}
+                            distortion={0.2}
+                            distortionScale={0.3}
+                            temporalDistortion={0.1}
+                            iridescence={0.3}
+                            iridescenceIOR={1.3}
+                            iridescenceThicknessRange={[100, 400]}
+                            clearcoat={1}
+                            color="#ffffff"
+                            transmission={1}
+                            roughness={0.1}
+                        />
+                    )}
                 </mesh>
             </Float>
         </group>

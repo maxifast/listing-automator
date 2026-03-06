@@ -7,22 +7,24 @@ import { ExamplesSection } from './components/sections/ExamplesSection';
 import { PricingSection } from './components/sections/PricingSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/sections/Footer';
+import { useMediaQuery } from './lib/utils';
 import { Menu, X, Bot } from 'lucide-react';
 
 function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedResult, setGeneratedResult] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <main className="relative w-full min-h-screen">
 
       {/* 3D Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={[1, 1]}>
+        <Canvas camera={{ position: [0, 0, 30], fov: 75 }} style={{ pointerEvents: 'none' }} dpr={isMobile ? [1, 1] : [1, 2]}>
           <ambientLight intensity={0.5} />
           <Suspense fallback={null}>
-            <GlassShape isGenerating={isGenerating} />
+            <GlassShape isGenerating={isGenerating} isMobile={isMobile} />
           </Suspense>
         </Canvas>
       </div>
